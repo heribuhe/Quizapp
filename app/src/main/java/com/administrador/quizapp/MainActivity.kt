@@ -4,6 +4,7 @@ import android.nfc.Tag
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -30,25 +31,39 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        boton1 = findViewById<Button>(R.id.boton1)
-
-        boton1.setOnClickListener {
-            val text = "True"
-            val duration = Toast.LENGTH_SHORT
-
-            val toast = Toast.makeText(this, text, duration) // in Activity
-            toast.show()
 
 
+        val input1 = findViewById<EditText>(R.id.texto)
+        val btnMostrar1 = findViewById<Button>(R.id.boton1)
+        val btnMostrar2 = findViewById<Button>(R.id.boton2)
+
+
+        btnMostrar1.setOnClickListener {
+            val texto = input1.text.toString()
+
+            if (texto.isEmpty()) {
+                Toast.makeText(this, "Ingrese un texto", Toast.LENGTH_SHORT).show()
+
+            }else{
+                Toast.makeText(this, texto, Toast.LENGTH_SHORT).show()
+            }
         }
 
-        boton2 = findViewById<Button>(R.id.boton2)
-        boton2.setOnClickListener {
-            val text = "false"
-            val duration = Toast.LENGTH_SHORT
-            val toast = Toast.makeText(this, text, duration) // in Activity
-            toast.show()
+
+
+        btnMostrar2.setOnClickListener {
+            val texto = btnMostrar2.text.toString()
+            if (texto.isEmpty()) {
+                Toast.makeText(this, "Ingrese un texto", Toast.LENGTH_SHORT).show()
+                }else{
+                Toast.makeText(this, texto.reversed(), Toast.LENGTH_SHORT).show()
+            }
         }
+
+
+
+
+
 
 
     }
